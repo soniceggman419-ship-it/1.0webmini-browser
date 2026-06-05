@@ -1,0 +1,129 @@
+body {
+  margin: 0;
+  font-family: "Times New Roman", serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #c0c0c0;
+}
+
+.toolbar {
+  display: flex;
+  padding: 6px;
+  background: linear-gradient(#e0e0e0, #bdbdbd);
+  border-bottom: 2px solid #888;
+  align-items: center;
+  gap: 4px;
+}
+
+.toolbar button {
+  padding: 6px 10px;
+  border: 2px outset #fff;
+  background: #dcdcdc;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.toolbar button:active {
+  border: 2px inset #fff;
+}
+
+.toolbar input {
+  flex: 1;
+  padding: 6px;
+  border: 2px inset #fff;
+  font-size: 14px;
+  font-family: monospace;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+}
+
+.bookmarksBar {
+  display: flex;
+  gap: 4px;
+  padding: 4px 6px;
+  background: #eee;
+  border-bottom: 1px solid #aaa;
+  overflow-x: auto;
+  min-height: 26px;
+}
+
+.bookmarksBar button {
+  font-size: 12px;
+  padding: 3px 6px;
+  border: 1px solid #888;
+  background: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.bookmarksBar button:hover {
+  background: #e0e0ff;
+}
+
+iframe {
+  flex: 1;
+  border: none;
+  background: white;
+  width: 100%;
+}
+
+.statusBar {
+  height: 22px;
+  padding: 3px 8px;
+  background: #e0e0e0;
+  border-top: 2px solid #888;
+  font-size: 12px;
+  font-family: monospace;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .toolbar {
+    flex-wrap: wrap;
+    padding: 4px;
+    gap: 3px;
+  }
+  .toolbar input {
+    min-width: 100px;
+    font-size: 16px;
+  }
+  .toolbar button {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+  .bookmarksBar {
+    min-height: 30px;
+  }
+  .bookmarksBar button {
+    padding: 5px 8px;
+  }
+  .statusBar {
+    height: 26px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .toolbar button {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+  .toolbar input {
+    font-size: 14px;
+  }
+  .toggle {
+    font-size: 10px;
+  }
+}

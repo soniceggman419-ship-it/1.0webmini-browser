@@ -1,0 +1,77 @@
+body {
+  margin: 0;
+  font-family: "Times New Roman", serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #c0c0c0;
+}
+
+/* ===== Toolbar ===== */
+.toolbar {
+  display: flex;
+  padding: 6px;
+  background: linear-gradient(#e0e0e0, #bdbdbd);
+  border-bottom: 2px solid #888;
+  align-items: center;
+}
+
+.toolbar button {
+  margin-right: 6px;
+  padding: 6px 10px;
+  border: 2px outset #fff;
+  background: #dcdcdc;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.toolbar button:active {
+  border: 2px inset #fff;
+}
+
+.toolbar input {
+  flex: 1;
+  padding: 6px;
+  border: 2px inset #fff;
+  font-size: 14px;
+}
+
+/* ===== Toggle ===== */
+.toggle {
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+/* ===== Bookmarks Bar ===== */
+.bookmarksBar {
+  display: flex;
+  gap: 6px;
+  padding: 4px;
+  background: #eee;
+  border-bottom: 1px solid #aaa;
+  overflow-x: auto;
+}
+
+.bookmarksBar button {
+  font-size: 12px;
+  padding: 4px 6px;
+  border: 1px solid #888;
+  background: #fff;
+  cursor: pointer;
+}
+
+/* ===== Viewer ===== */
+iframe {
+  flex: 1;
+  border: none;
+  background: white;
+}
+
+/* ===== Status Bar ===== */
+.statusBar {
+  height: 22px;
+  padding: 3px 8px;
+  background: #e0e0e0;
+  border-top: 2px solid #888;
+  font-size: 12px;
+}

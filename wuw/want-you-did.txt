@@ -1,0 +1,39 @@
+=== Changes made to the mini-browser ===
+
+1. Created web1.0/ directory with modular code:
+   - web1.0/fetcher.js       - Fetch pages via CORS proxy with fallbacks
+   - web1.0/sanitizer.js     - Strip scripts/style/img/iframe, keep rendering attrs
+   - web1.0/renderer.js      - Render sanitized HTML in iframe via Blob URL
+   - web1.0/history.js       - Back/forward navigation stack
+   - web1.0/linkHandler.js   - Click links to navigate within browser
+   - web1.0/forms.js         - Handle GET form submissions
+   - web1.0/textMode.js      - Strip HTML to plain text
+   - web1.0/app.js           - Bookmark save/load via localStorage
+   - web1.0/main.js          - Main entry point wiring everything together
+   - web1.0/styles.css       - Retro Web 1.0 styling with mobile responsive
+
+2. Created web1.0.html entry point (separate from root index.html)
+
+3. Modified root index.html:
+   - Added "Web 1.0" link button in toolbar
+   - Removed duplicate module script (was causing double-load)
+
+4. Modified m.html to use web1.0 code (back/forward, bookmarks, text mode, status bar)
+
+5. Fixed root app.js:
+   - Uses proxy fallbacks (api.allorigins.win/raw, corsproxy.io)
+   - No longer strips ALL attributes (keeps href, etc., only removes style/on*/srcdoc/srcset)
+   - Strips additional tags: video, audio, source, object, embed
+
+6. Fixed main issues:
+   - Removed iframe sandbox (blocked contentDocument for link clicks)
+   - Sanitizer keeps useful attributes, only strips dangerous ones
+   - Proxy fallback chain: tries multiple proxies if one fails
+   - AbortSignal.timeout prevents hanging on dead proxies
+   - Added text file detection (.txt, .c, .java, .py, .js, .ts, .rs, .go, .md, .json, .sh, etc.)
+   - Text files render as escaped <pre> text
+   - Status bar shows loading/error states
+   - Link handler resolves relative URLs
+   - Text mode toggle re-renders current page
+
+7. GitHub Pages compatible: All client-side, no backend needed

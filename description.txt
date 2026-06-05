@@ -1,0 +1,25 @@
+the parts after line one are all AI generated 
+HTML-Only Minimal Browser Description
+
+This project is a highly restricted, minimal web browser designed to render only the raw structural content of HTML documents. Its primary purpose is to strip away all modern web complexities—such as styling, scripting, and media—in order to present a clean, text-focused view of web pages.
+
+The browser works by fetching HTML content from the internet באמצעות a proxy service, then sanitizing the document before rendering it. During this sanitization process, all non-structural elements are removed. This includes JavaScript (<script> tags), CSS (<style> tags and external stylesheets), images (<img> tags), iframes, inline styles, and event handlers. The result is a simplified document that contains only the core HTML structure, such as headings, paragraphs, and basic layout elements.
+
+In its strictest mode, the browser can also remove most HTML attributes, leaving behind only essential structural tags. Optionally, anchor (<a>) tags can retain their href attributes to allow basic navigation functionality.
+
+This browser effectively mimics the experience of early web browsers from the 1990s or text-based browsers like Lynx, offering a distraction-free and security-focused way to view web content. Because it eliminates scripts and external resources, it also significantly reduces the risk of malicious code execution.
+
+However, due to its limitations, many modern websites may not display correctly or may appear incomplete, as they rely heavily on JavaScript and CSS for rendering and functionality.
+
+Potential Future Plans
+
+🚀 If you want to go further
+Next steps I can build with you:
+
+🔗 Clickable navigation inside your browser (handle <a> clicks manually)
+📜 Convert it into a terminal-style browser UI
+🧱 Build a real rendering engine (no iframe at all)
+💻 Package as a desktop app (Electron)
+
+Just tell me what direction yo
+u want 👍

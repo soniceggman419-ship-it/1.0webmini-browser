@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Web 1.0 Browser</title>
+  <link rel="stylesheet" href="web1.0/styles.css" />
+</head>
+<body>
+
+  <div class="toolbar">
+    <button id="backBtn" title="Back">←</button>
+    <button id="forwardBtn" title="Forward">→</button>
+
+    <input 
+      type="text" 
+      id="urlInput" 
+      placeholder="Enter URL..." 
+      autocomplete="off"
+    />
+
+    <button id="goBtn">Go</button>
+
+    <button id="bookmarkBtn" title="Save Bookmark">★</button>
+
+    <label class="toggle" title="Toggle text-only mode">
+      <input type="checkbox" id="textModeToggle" />
+      Text Mode
+    </label>
+  </div>
+
+  <div class="bookmarksBar" id="bookmarksBar"></div>
+
+  <iframe 
+    id="viewer"
+  ></iframe>
+
+  <div class="statusBar" id="statusBar">Ready</div>
+
+  <script src="web1.0/app.js"></script>
+  <script type="module" src="web1.0/main.js"></script>
+</body>
+</html>
