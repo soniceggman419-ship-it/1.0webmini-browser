@@ -12,28 +12,18 @@
    - web1.0/main.js          - Main entry point wiring everything together
    - web1.0/styles.css       - Retro Web 1.0 styling with mobile responsive
 
-2. Created web1.0.html entry point (separate from root index.html)
+2. Created internal/ directory for internal pages:
+   - internal/welcome.html   - Internal start page with URL input
+   - Accessed via int://welcome custom protocol
 
-3. Modified root index.html:
-   - Added "Web 1.0" link button in toolbar
-   - Removed duplicate module script (was causing double-load)
+3. Custom int:// protocol:
+   - int://page loads internal/page.html
+   - Link handler supports int:// links
+   - Internal pages load directly (no proxy)
+   - Normal http/https URLs load via proxy as before
 
-4. Modified m.html to use web1.0 code (back/forward, bookmarks, text mode, status bar)
+4. Created web1.0.html and index.html entry points (same content)
 
-5. Fixed root app.js:
-   - Uses proxy fallbacks (api.allorigins.win/raw, corsproxy.io)
-   - No longer strips ALL attributes (keeps href, etc., only removes style/on*/srcdoc/srcset)
-   - Strips additional tags: video, audio, source, object, embed
+5. Removed all old files not related to Web 1.0 update
 
-6. Fixed main issues:
-   - Removed iframe sandbox (blocked contentDocument for link clicks)
-   - Sanitizer keeps useful attributes, only strips dangerous ones
-   - Proxy fallback chain: tries multiple proxies if one fails
-   - AbortSignal.timeout prevents hanging on dead proxies
-   - Added text file detection (.txt, .c, .java, .py, .js, .ts, .rs, .go, .md, .json, .sh, etc.)
-   - Text files render as escaped <pre> text
-   - Status bar shows loading/error states
-   - Link handler resolves relative URLs
-   - Text mode toggle re-renders current page
-
-7. GitHub Pages compatible: All client-side, no backend needed
+6. GitHub Pages compatible: All client-side, no backend needed

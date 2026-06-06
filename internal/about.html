@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - Mini Browser</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Times New Roman", Times, serif;
+  background: #c0c0c0;
+  padding: 20px;
+  color: #222;
+}
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #e8e8e8;
+  border: 2px outset #fff;
+  padding: 30px;
+  text-align: center;
+}
+h1 {
+  font-size: 28px;
+  margin-bottom: 4px;
+}
+.version {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+hr {
+  border: none;
+  border-top: 1px solid #888;
+  margin: 16px 0;
+}
+.nav {
+  margin-top: 16px;
+}
+.nav a {
+  color: #00a;
+  text-decoration: underline;
+  margin: 0 8px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Mini Browser</h1>
+  <div class="version">Version 1.0 — Web 1.0 Edition</div>
+
+  <hr>
+
+  <p>A minimal, text-focused web browser that strips away the modern web to reveal the raw content underneath.</p>
+
+  <p>No JavaScript. No CSS. No images. Just HTML.</p>
+
+  <hr>
+
+  <p><b>Features:</b> Back/Forward history, bookmarks, text-only mode, clickable links, form support, text file viewer, internal pages.</p>
+
+  <p><b>Built with:</b> Plain HTML, CSS, and JavaScript — no frameworks, no libraries.</p>
+
+  <p><b>Proxy:</b> Uses public CORS proxies to fetch and sanitize web pages.</p>
+
+  <hr>
+
+  <div class="nav">
+    <a href="#" onclick="nav('int://welcome');return false">Start</a>
+    <a href="#" onclick="nav('int://help');return false">Help</a>
+  </div>
+</div>
+<script>
+function nav(url) {
+  window.parent.postMessage({ type: "navigate", url }, "*");
+}
+</script>
+</body>
+</html>

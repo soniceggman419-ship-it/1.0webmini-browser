@@ -51,6 +51,24 @@ function escapeHTML(str) {
     .replace(/>/g, "&gt;");
 }
 
+function isInternalUrl(url) {
+  return url.startsWith("int://");
+}
+
+function resolveInternalUrl(url) {
+  const page = url.slice(6).replace(/\/+$/, "") || "welcome";
+  return "internal/" + page + ".html";
+}
+
+viewer.src = "internal/welcome.html";
+
+window.addEventListener("message", (e) => {
+  if (e.data && e.data.type === "navigate") {
+    input.value = e.data.url;
+    loadPage(e.data.url);
+  }
+});
+
 let textMode = false;
 let currentUrl = "";
 
@@ -68,7 +86,11 @@ backBtn.addEventListener("click", () => {
   const url = goBack();
   if (url) {
     input.value = url;
-    _loadPageInternal(url);
+    if (isInternalUrl(url)) {
+      loadPageInternalFile(url);
+    } else {
+      _loadPageInternal(url);
+    }
   }
 });
 
@@ -76,7 +98,11 @@ forwardBtn.addEventListener("click", () => {
   const url = goForward();
   if (url) {
     input.value = url;
-    _loadPageInternal(url);
+    if (isInternalUrl(url)) {
+      loadPageInternalFile(url);
+    } else {
+      _loadPageInternal(url);
+    }
   }
 });
 
@@ -87,12 +113,25 @@ onViewerReady(() => {
 
 async function loadPage(url) {
   if (!url) return;
-  if (!url.startsWith("http")) url = "https://" + url;
   input.value = url;
 
   pushHistory(url);
   currentUrl = url;
-  await _loadPageInternal(url);
+
+  if (isInternalUrl(url)) {
+    loadPageInternalFile(url);
+  } else {
+    if (!url.startsWith("http")) url = "https://" + url;
+    currentUrl = url;
+    await _loadPageInternal(url);
+  }
+}
+
+function loadPageInternalFile(url) {
+  const file = resolveInternalUrl(url);
+  viewer.src = file;
+  setCurrentUrl(url);
+  statusBar.textContent = "Done";
 }
 
 async function _loadPageInternal(url) {

@@ -1,2 +1,2 @@
-# 1.0webmini-browser
-the 1.0 update for mini-browser
+# mini-browser
+this was Vive coded with AI

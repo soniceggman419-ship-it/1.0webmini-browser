@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Help - Mini Browser</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Times New Roman", Times, serif;
+  background: #c0c0c0;
+  padding: 20px;
+  color: #222;
+}
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  background: #e8e8e8;
+  border: 2px outset #fff;
+  padding: 30px;
+}
+h1 {
+  font-size: 24px;
+  border-bottom: 2px solid #888;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+h2 {
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+code {
+  background: #ddd;
+  padding: 2px 6px;
+  border: 1px solid #aaa;
+  font-size: 13px;
+}
+ul {
+  margin: 10px 0 10px 20px;
+}
+li {
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.box {
+  background: #d0d0d0;
+  border: 1px inset #fff;
+  padding: 12px;
+  margin: 12px 0;
+}
+.nav {
+  margin-top: 20px;
+  padding-top: 12px;
+  border-top: 1px solid #888;
+}
+.nav a {
+  color: #00a;
+  text-decoration: underline;
+  margin-right: 12px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Help</h1>
+
+  <h2>What is this?</h2>
+  <p>A minimal Web 1.0 style browser that strips away JavaScript, CSS, images, and media from web pages — leaving only the raw HTML content. It gives you a fast, text-focused browsing experience like the early web.</p>
+
+  <h2>Entering a URL</h2>
+  <p>Type a URL into the address bar and press <b>Enter</b> or click <b>Go</b>. If you don't type <code>https://</code>, it will be added automatically.</p>
+
+  <div class="box">
+    <b>Examples:</b><br>
+    <code>https://en.wikipedia.org/wiki/World_Wide_Web</code><br>
+    <code>example.com</code>
+  </div>
+
+  <h2>Internal Pages (<code>int://</code>)</h2>
+  <p>You can access built-in pages using the <code>int://</code> protocol:</p>
+  <ul>
+    <li><code><a href="#" onclick="nav('int://welcome');return false">int://welcome</a></code> — Start page with URL input</li>
+    <li><code><a href="#" onclick="nav('int://help');return false">int://help</a></code> — This help page</li>
+    <li><code><a href="#" onclick="nav('int://about');return false">int://about</a></code> — About the browser</li>
+  </ul>
+  <p>All internal pages are stored in the <code>internal/</code> folder. Typing <code>int://pagename</code> loads <code>internal/pagename.html</code>.</p>
+
+  <h2>Features</h2>
+  <ul>
+    <li><b>Back / Forward</b> — Navigate your browsing history</li>
+    <li><b>Bookmarks</b> — Click the ★ button to save the current URL. Saved bookmarks appear in the bar below the toolbar. Click a bookmark to go there.</li>
+    <li><b>Text Mode</b> — Toggle "Text Mode" to strip all HTML and view only the plain text content of a page.</li>
+    <li><b>Status Bar</b> — Shows loading progress and error messages at the bottom.</li>
+    <li><b>Clickable Links</b> — Links on loaded pages are clickable and will navigate within the browser.</li>
+  </ul>
+
+  <h2>Text / Code Files</h2>
+  <p>If the URL ends in a text or code file extension (<code>.txt</code>, <code>.c</code>, <code>.java</code>, <code>.py</code>, <code>.js</code>, etc.), the browser will display the raw file contents instead of trying to render it as HTML.</p>
+
+  <h2>Limitations</h2>
+  <ul>
+    <li>No JavaScript — pages that rely on JS will not work</li>
+    <li>No CSS — pages will appear unstyled</li>
+    <li>No images, video, or audio</li>
+    <li>Some sites may block the proxy and fail to load</li>
+  </ul>
+
+  <div class="nav">
+    <a href="#" onclick="nav('int://welcome');return false">Back to Start</a>
+    <a href="#" onclick="nav('int://about');return false">About</a>
+  </div>
+</div>
+<script>
+function nav(url) {
+  window.parent.postMessage({ type: "navigate", url }, "*");
+}
+</script>
+</body>
+</html>
